@@ -140,6 +140,8 @@ body{
   transition: 0.5s;
 }
 
-
+.show-winning-message {
+  display: flex;
+}
 
 
