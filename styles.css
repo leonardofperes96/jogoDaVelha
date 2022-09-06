@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+body{
+  background: linear-gradient(90deg,#5fc936 0%, #00ceff 100% );
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+  position: relative;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.container.x .cell:not(.x):not(.circle):hover::after,
+.container.x .cell:not(.x):not(.circle):hover::before,
+.container.circle .cell:not(.x):not(.circle):hover::after,
+.container.circle .cell:not(.x):not(.circle):hover::before{
+  background: rgba(255,255,255, 0.3) !important;
+}
+
+.cell.x, .cell.circle{
+  cursor: not-allowed;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3){
+  border-top: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9){
+  border-bottom: none;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7){
+  border-left: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9){
+  border-right: none;
+}
+
+.cell.x::after,
+.cell.x::before,
+.container.x .cell:not(.x):not(.circle):hover::after,
+.container.x .cell:not(.x):not(.circle):hover::before {
+  content: '';
+  width: calc(100px * 0.9);
+  height: calc(100px * 0.15);
+  background: white;
+  position: absolute;
+}
+
+
+.cell.x::after,
+.container.x .cell:not(.x):not(.circle):hover::after {
+  transform: rotate(45deg);
+}
+
+.cell.x::before,
+.container.x .cell:not(.x):not(.circle):hover::before {
+  transform: rotate(135deg);
+}
+
+.cell.circle::after,
+.cell.circle::before,
+.container.circle .cell:not(.x):not(.circle):hover::after,
+.container.circle .cell:not(.x):not(.circle):hover::before {
+  content: '';
+  width: calc(100px * 0.9);
+  height: calc(100px * 0.9);
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+}
+
+.winning {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0, 0.8);
+  flex-direction: column;
+  gap: 1rem;
+  display: none;
+}
+
+.winning p{
+  font-size: 4rem;
+  color: white;
+}
+
+.reset-button{
+  font-size: 2rem;
+  background:rgba(0,0,0, 0.8);
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 0.5rem;
+  color: white;
+  overflow: hiden;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  color: black;
+  background: white;
+  transition: 0.5s;
+}
+
+
+
+
