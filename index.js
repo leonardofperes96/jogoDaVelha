@@ -13,7 +13,9 @@ let isCircle = false;
 const restartGame = () => {
   container.classList.remove('x');
   container.classList.remove('circle');
+  container.classList.add('x');
 };
+restartGame();
 
 const winningPossibilities = [
   [0, 1, 2],
@@ -84,10 +86,9 @@ const handleClick = (e) => {
   const isWin = checkWin(classToAdd);
   if (isWin) {
     appendWin();
-  } else if (isDraw) {
+  }
+  if (isDraw) {
     appendDraw();
-  } else {
-    restartGame();
   }
 };
 
@@ -98,6 +99,7 @@ const handleReset = () => {
     winningDiv.classList.remove('show-winning-message');
     cell.removeEventListener('click', handleClick);
     cell.addEventListener('click', handleClick, { once: true });
+    window.location.reload();
   });
 };
 
